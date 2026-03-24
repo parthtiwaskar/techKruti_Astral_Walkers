@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { companyController } from './controller';
+
+const router = Router();
+
+router.get('/', companyController.getCompanies);
+router.post('/', companyController.createCompany);
+router.get('/:id', companyController.getCompanyById);
+
+export { router as companyRoutes };

@@ -30,6 +30,8 @@ export interface Student {
 
 export interface Job {
   id: string;
+  title?: string;
+  companyId?: string;
   requiredSkills: string[];
   preferredSkills: string[];
   minCgpa: number;
@@ -38,6 +40,8 @@ export interface Job {
   location: string;
   mode: string;
   shift: string;
+  salaryRange?: string;
+  deadline?: string;
 }
 
 export interface Recommendation {
@@ -57,4 +61,24 @@ export interface Application {
   studentId: string;
   jobId: string;
   status: "applied" | "shortlisted" | "interview" | "rejected" | "offered";
+  appliedAt?: string;
+  updatedAt?: string;
+  statusHistory?: { status: string; timestamp: string }[];
+}
+
+export interface Company {
+  id: string;
+  name: string;
+  description: string;
+  location: string;
+  domain: string;
+}
+
+export interface Notification {
+  id: string;
+  studentId: string;
+  message: string;
+  type: string;
+  createdAt: string;
+  read: boolean;
 }
