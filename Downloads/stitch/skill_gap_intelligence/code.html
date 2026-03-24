@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Gap Intelligence | PlaceBridge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#8083ff",
+              "on-primary": "#f4f1ff",
+              "outline-variant": "#a5adc6",
+              "on-primary-container": "#0a0081",
+              "background": "#f6f6ff",
+              "primary-dim": "#3939c7",
+              "on-secondary-container": "#5517bf",
+              "inverse-on-surface": "#959cb5",
+              "on-tertiary-fixed-variant": "#003d5a",
+              "surface": "#f6f6ff",
+              "on-error": "#ffefef",
+              "outline": "#6f768e",
+              "tertiary-fixed-dim": "#25adf1",
+              "on-error-container": "#510017",
+              "surface-container-high": "#d9e2ff",
+              "surface-container": "#e2e7ff",
+              "on-secondary-fixed-variant": "#5f28c8",
+              "tertiary-dim": "#00557b",
+              "primary-fixed-dim": "#8387ff",
+              "surface-tint": "#4647d3",
+              "primary-container": "#9396ff",
+              "on-primary-fixed-variant": "#0e009d",
+              "on-background": "#272e42",
+              "primary": "#4647d3",
+              "tertiary-fixed": "#40bbff",
+              "secondary-dim": "#5e26c7",
+              "tertiary": "#00628c",
+              "surface-container-highest": "#d1dcff",
+              "on-tertiary": "#e9f4ff",
+              "on-surface": "#272e42",
+              "primary-fixed": "#9396ff",
+              "surface-container-low": "#eef0ff",
+              "inverse-surface": "#060e20",
+              "on-surface-variant": "#535b71",
+              "error-dim": "#a70138",
+              "on-primary-fixed": "#000000",
+              "error": "#b41340",
+              "secondary": "#6a37d4",
+              "surface-dim": "#c7d4fa",
+              "secondary-container": "#dac9ff",
+              "on-secondary": "#f8f0ff",
+              "error-container": "#f74b6d",
+              "on-secondary-fixed": "#40009b",
+              "on-tertiary-container": "#00344d",
+              "surface-variant": "#d1dcff",
+              "surface-bright": "#f6f6ff",
+              "secondary-fixed-dim": "#ceb9ff",
+              "on-tertiary-fixed": "#001a29",
+              "secondary-fixed": "#dac9ff",
+              "tertiary-container": "#40bbff",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .roadmap-connector {
+        background: repeating-linear-gradient(90deg, #40bbff, #40bbff 4px, transparent 4px, transparent 8px);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low flex flex-col z-50">
+<div class="p-8">
+<h1 class="text-2xl font-bold tracking-tight text-primary font-headline">PlaceBridge</h1>
+<p class="text-xs font-semibold text-on-surface-variant tracking-widest mt-1">STUDENT PORTAL</p>
+</div>
+<nav class="flex-1 px-0">
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="font-medium">Companies</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-medium">Applications</span>
+</a>
+<!-- Active State for Skill Gap -->
+<a class="flex items-center gap-3 px-6 py-4 text-primary bg-surface-container-lowest border-l-[3px] border-primary font-semibold" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-medium">Skill Gap</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 text-slate-500 hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span class="font-medium">Admin Panel</span>
+</a>
+</nav>
+<div class="p-6">
+<div class="flex items-center gap-3 p-3 bg-surface-container rounded-2xl">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up portrait of a young professional man with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0KHlUUXfKCiACZ7yLRsY2P44ihQiC6FESJ9NaZTC5mrS1OBZibL-opZdLg2Ft02TKeKN96WptSGcdQOszP9kPNq8lxHE0xFDXnxm06FUTFVWS2dw4cLDjGOoPKKdqzxNnoDoYBwSBd1hAwV4ho-1X3dhUbj-FKoZynQE83-o2x7jps5Y8q94aWqKkzIQnvViGs5_7q89CSMRfPH09q98R1AbmCT37C_Simz960UAqtMx0KAyqRo7eLhuDQyaEVLGrGpjR0txOsvim"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant truncate">CS Junior</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 left-64 right-0 h-20 glass-card flex items-center justify-between px-10 z-40">
+<div class="flex-1 max-w-xl">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-0 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-transparent border-none focus:ring-0 text-lg placeholder:text-on-surface-variant/50" placeholder="Search insights, skills, or companies..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<span class="font-headline font-bold text-primary">PlaceBridge</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-28 px-10 pb-12 min-h-screen">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<nav class="flex items-center gap-2 text-sm font-medium text-on-surface-variant mb-3">
+<span>Intelligence</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary">Skills Analysis</span>
+</nav>
+<h2 class="text-5xl font-extrabold font-headline tracking-tight text-on-surface">Your Skill Gap Analysis</h2>
+<p class="text-lg text-on-surface-variant mt-2 max-w-2xl">We've identified specific technical milestones between your current profile and top-tier engineering roles.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-4">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="44" stroke-width="6"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-sm font-bold">75%</span>
+</div>
+<div>
+<p class="text-sm font-bold">Overall Readiness</p>
+<p class="text-xs text-on-surface-variant">Top 10% of candidates</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: Target Case Study (Amazon) -->
+<section class="mb-16">
+<div class="bg-gradient-to-br from-primary to-secondary p-1 rounded-3xl">
+<div class="bg-surface-container-lowest rounded-[1.4rem] p-8 md:p-12">
+<div class="flex flex-wrap items-start justify-between gap-8 mb-12">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+<div>
+<h3 class="text-3xl font-bold font-headline">To become eligible for Amazon</h3>
+<p class="text-on-surface-variant flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-sm text-tertiary">verified</span>
+                                    SDE-1 Placement Track (Level 4)
+                                </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-error-container/10 text-error-dim rounded-full text-sm font-bold border border-error-container/20">Gap Identified</div>
+<div class="px-4 py-2 bg-tertiary-container/20 text-tertiary-dim rounded-full text-sm font-bold">Priority High</div>
+</div>
+</div>
+<!-- Roadmap Visualization -->
+<div class="relative py-12">
+<!-- Connector Line -->
+<div class="absolute top-[50%] left-0 right-0 h-1 roadmap-connector z-0 md:block hidden"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="flex flex-col items-center group">
+<div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg shadow-primary/30 mb-6 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">code_blocks</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl w-full text-center border-t-4 border-error">
+<p class="text-xs font-bold text-error uppercase tracking-wider mb-2">Step 1</p>
+<h4 class="text-xl font-bold font-headline mb-2">DSA (Priority High)</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Focus on Graphs, Tries, and DP. Amazon assessments lean heavily on complexity analysis.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center group">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest text-primary flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">account_tree</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl w-full text-center">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Step 2</p>
+<h4 class="text-xl font-bold font-headline mb-2">System Design</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">HLD fundamentals. Understanding Scalability, Availability, and Load Balancing.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center group">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest text-primary flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-2xl">view_quilt</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl w-full text-center">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-2">Step 3</p>
+<h4 class="text-xl font-bold font-headline mb-2">React</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Advanced hooks and state management for the front-end engineering round.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Resources & Impact -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Suggested Resources -->
+<div class="lg:col-span-8">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-2xl font-bold font-headline">Suggested Resources</h3>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                        View All <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Resource 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-slate-200">
+<img alt="Code snippet on screen" class="w-full h-full object-cover" data-alt="Close up of high-resolution computer screen displaying colorful lines of code in a dark mode IDE" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe6pc7FUNKnYH4xOs5B4GDJ3zHq7ArOQNbtQ14s8q42JhzEQUUUTze9T43Z6CLjJkDlTg5lRpDHQhL9Ay9gBf01BURKK_OxLWgaCqZQCnyTchDfJVWwq4AjAYLBuxRR3OX68ugRsjqJ14QEYTNg145BjfhL4OhKBmcczwpL96ozRmHgWxPhqD1RNJql9w0vzgP4gJUJ3R3e70qmQp0wFivWsSSszdmBKj6ePM7MlRwJkh3YIMNnrJvRPA-bq9_UsmwTbEO8KRRrFxl"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div>
+<span class="text-[10px] font-bold bg-primary-container/20 text-on-primary-fixed-variant px-2 py-0.5 rounded-full uppercase">YouTube</span>
+<h5 class="font-bold text-md mt-1 line-clamp-2">Advanced Graph Algorithms for FAANG</h5>
+<p class="text-xs text-on-surface-variant mt-1">Striver's SDE Sheet • 45 mins</p>
+</div>
+</div>
+<!-- Resource 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start border-l-4 border-tertiary">
+<div class="w-24 h-24 flex-shrink-0 rounded-xl bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">school</span>
+</div>
+<div>
+<span class="text-[10px] font-bold bg-tertiary-container/20 text-tertiary-dim px-2 py-0.5 rounded-full uppercase">Course</span>
+<h5 class="font-bold text-md mt-1 line-clamp-2">System Design Fundamentals</h5>
+<p class="text-xs text-on-surface-variant mt-1">Arpit Bhayani • 12 Modules</p>
+</div>
+</div>
+<!-- Resource 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-slate-200">
+<img alt="React logo abstract" class="w-full h-full object-cover" data-alt="Minimalist abstract representation of a modern web framework logo with soft neon blue lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3_zyCr8fD0ORw_2ohK5yDJtvGHbr7XX6KbOPZnInNelAd0bQOYmH-161DfvnOxHiUPJ9DdB_exp0otlQ36kJI3VyJxTD9farSACEzlCVQs9F8ut0BmxbZo1oKtULtcZlgLduezVG2oWIcZwx8IUXt396nxGA98uOJrCFrKGL0SNje42ksM5eXOveDmW9I066aOHqlSOiQm-g4aLpW90TrSF7ioT20AgarEY4kThzFR3qMMzE7uFMa9zZ9elPMCXrzInTPgEZEQs09"/>
+<div class="absolute inset-0 flex items-center justify-center bg-black/20">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+</div>
+<div>
+<span class="text-[10px] font-bold bg-primary-container/20 text-on-primary-fixed-variant px-2 py-0.5 rounded-full uppercase">YouTube</span>
+<h5 class="font-bold text-md mt-1 line-clamp-2">React 18: Beyond the Hooks</h5>
+<p class="text-xs text-on-surface-variant mt-1">Academind • 1.5 hours</p>
+</div>
+</div>
+<!-- Resource 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start border-l-4 border-primary">
+<div class="w-24 h-24 flex-shrink-0 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">menu_book</span>
+</div>
+<div>
+<span class="text-[10px] font-bold bg-primary-container/20 text-on-primary-fixed-variant px-2 py-0.5 rounded-full uppercase">Documentation</span>
+<h5 class="font-bold text-md mt-1 line-clamp-2">Amazon Leadership Principles Guide</h5>
+<p class="text-xs text-on-surface-variant mt-1">Official Guide • 20 min read</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Summary -->
+<div class="lg:col-span-4">
+<div class="bg-surface-container-high rounded-3xl p-8 h-full flex flex-col justify-between overflow-hidden relative">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6">rocket_launch</span>
+<h3 class="text-3xl font-bold font-headline leading-tight">Impact Summary</h3>
+<p class="text-lg text-on-surface-variant mt-4">"After completing these, you unlock 5 more companies."</p>
+<div class="mt-8 space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<img alt="Google icon" class="w-6 h-6 grayscale" data-alt="Minimalist flat icon of a major technology company logo on a white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpl7WGnmaAT3VfMptT5h1tkjwbHyytMfaCK388swSfmQ6aL0dnueRFYEonALoiwJGR7Izdmw3e4gdlpLiq0bTVHs72qGaT2Vk8EE1wysD9Pfro-4wifybwXcACzzg8D9Wof119qmsPegQmjzX5zO1cFQQ_zNSBKDqgjM7T4B9Zzwf3PoDc1hDMFPwP8uVmbgAwTtk7rBpidXZIweyITqIq1XhCOpexTzhnPR7kZCKvH25nd0Fc5fluxCcD1KNIUVxmlcz9VXzFhRwZ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>Google</span>
+<span class="text-primary">+15% Readiness</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<img alt="Meta icon" class="w-6 h-6 grayscale" data-alt="Minimalist corporate brand icon for a social media conglomerate on a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI1ZVzuJ60O5O8VWG59dpDz6sZN5Ey2PufFV9DNiT_KQTJFqTj1sezU7ElYl2iAmuary-FMciYpSaS80MsWJlLzsX9GI-mucsBSeYO9yRM1yAvFohzcCSgZjI_Z5CsbN2yPZK4AbulE39cDqdY9mG2mF85Oy40RtcuvTiSHNhjJT0Zf1rwvpKXx14dFb7OQXYpYOJVR72obTzHmh8TT49gxj_cCF0KiDUIZ_li0sQnX0cktUHJtFlORBihZR7lqKLEjdDFyGtQkUZh"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>Meta</span>
+<span class="text-primary">+22% Readiness</span>
+</div>
+<div class="h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[58%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-on-surface text-surface py-4 rounded-2xl font-bold mt-12 hover:bg-on-surface-variant transition-colors flex items-center justify-center gap-2">
+                        Get Started <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Floating Action Button Suppression (Hidden per instructions for details/analysis page) -->
+</main>
+<!-- BottomNavBar (Hidden on desktop per Pivot rule) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-xl flex justify-around py-4 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Dash</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">business</span>
+<span class="text-[10px] font-bold">Jobs</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="text-[10px] font-bold">Skills</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlaceBridge Student Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#8083ff",
+              "on-primary": "#f4f1ff",
+              "outline-variant": "#a5adc6",
+              "on-primary-container": "#0a0081",
+              "background": "#f6f6ff",
+              "primary-dim": "#3939c7",
+              "on-secondary-container": "#5517bf",
+              "inverse-on-surface": "#959cb5",
+              "on-tertiary-fixed-variant": "#003d5a",
+              "surface": "#f6f6ff",
+              "on-error": "#ffefef",
+              "outline": "#6f768e",
+              "tertiary-fixed-dim": "#25adf1",
+              "on-error-container": "#510017",
+              "surface-container-high": "#d9e2ff",
+              "surface-container": "#e2e7ff",
+              "on-secondary-fixed-variant": "#5f28c8",
+              "tertiary-dim": "#00557b",
+              "primary-fixed-dim": "#8387ff",
+              "surface-tint": "#4647d3",
+              "primary-container": "#9396ff",
+              "on-primary-fixed-variant": "#0e009d",
+              "on-background": "#272e42",
+              "primary": "#4647d3",
+              "tertiary-fixed": "#40bbff",
+              "secondary-dim": "#5e26c7",
+              "tertiary": "#00628c",
+              "surface-container-highest": "#d1dcff",
+              "on-tertiary": "#e9f4ff",
+              "on-surface": "#272e42",
+              "primary-fixed": "#9396ff",
+              "surface-container-low": "#eef0ff",
+              "inverse-surface": "#060e20",
+              "on-surface-variant": "#535b71",
+              "error-dim": "#a70138",
+              "on-primary-fixed": "#000000",
+              "error": "#b41340",
+              "secondary": "#6a37d4",
+              "surface-dim": "#c7d4fa",
+              "secondary-container": "#dac9ff",
+              "on-secondary": "#f8f0ff",
+              "error-container": "#f74b6d",
+              "on-secondary-fixed": "#40009b",
+              "on-tertiary-container": "#00344d",
+              "surface-variant": "#d1dcff",
+              "surface-bright": "#f6f6ff",
+              "secondary-fixed-dim": "#ceb9ff",
+              "on-tertiary-fixed": "#001a29",
+              "secondary-fixed": "#dac9ff",
+              "tertiary-container": "#40bbff",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Manrope', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #4647d3 0%, #6a37d4 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 bg-[#eef0ff] dark:bg-slate-900 z-50">
+<div class="p-8">
+<h1 class="text-2xl font-bold tracking-tight text-[#4647d3] dark:text-[#6366F1]">PlaceBridge</h1>
+<p class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1">Student Portal</p>
+</div>
+<nav class="flex-1 px-0">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-[#4647d3] dark:text-[#6366F1] bg-[#ffffff] dark:bg-slate-800 rounded-l-none border-l-[3px] border-[#4647d3] font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="business">business</span>
+<span>Companies</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Applications</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span>Skill Gap</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span>Admin Panel</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-surface-container-highest rounded-2xl p-4 flex items-center gap-3">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full bg-primary-container" data-alt="close-up portrait of a professional young man with friendly expression in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR0DAj73gr3ckWtFSzKBOwkQpWdWaLDwzNG_QW-eMQTII2s_m90R96jZYU9tLpmvmoquDleg5enJndBBjoqV4JaKjlS7FDFlAKn5oOPMAWjDwTJAQkvp2-72lS44STO19zvOqDun9_jMvDWNOXQkkl80yvh8dsFgaO-E-z5d7YDmvT3yMpbLpf7WU_EU0AvEflSC18qMF1rtd_t9Tm0mAHlvW370ApJNng0ah7UHz85wHvZEHWHjv2yssJm_ckTwRr9bxQtWAv0eLi"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Parth Sharma</p>
+<p class="text-xs text-on-surface-variant">CS - Final Year</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full pr-8 py-4 sticky top-0 z-40 bg-[#f6f6ff]/80 dark:bg-slate-950/80 backdrop-blur-xl">
+<div class="flex-1 px-8">
+<div class="relative max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 pl-10 text-body-lg placeholder:text-on-surface-variant/60" placeholder="Search companies, roles, or resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all relative">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-semibold">Parth Sharma</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="professional headshot of a young male student in business casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARAdYR73FlnuWreilWwdc73q2qZDsusp-vr8O5vkVo1BWywNftH6lAGcoZiD2lFF4xV9yec6MrZfYhGjLdGedfO358W6lwNMHidysg4RZYqcdb-wJ3jHZjZ0nUYhahIX8ha5nPQdB33cYLzIgx6YeXgOP_3Ig3nVPxJspzqJk1FKNUFmQsYuTVK-xpeXMJSzlO7cskN7d9fHO0jd6mzqSj7qBLJ3ob57CpjGvADsLPL9jgJOzx6J63kCp5WQWLuGLfS_jG6DCG2E3E"/>
+</div>
+</div>
+</header>
+<div class="px-8 pb-12">
+<!-- Hero Header -->
+<section class="mt-8 mb-10">
+<h2 class="text-4xl font-extrabold tracking-tight font-headline">Welcome back, Parth 👋</h2>
+<p class="text-on-surface-variant mt-2 text-lg">You have 3 new matching opportunities and one upcoming interview today.</p>
+</section>
+<!-- Summary Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_20px_40px_rgba(39,46,66,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary-container/20 rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="business">business</span>
+</div>
+<span class="text-xs font-bold text-primary px-2 py-1 bg-primary/10 rounded-full">+12 new</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Total Companies</p>
+<h3 class="text-3xl font-bold mt-1">142</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_20px_40px_rgba(39,46,66,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-container/20 rounded-xl">
+<span class="material-symbols-outlined text-tertiary" data-icon="verified">verified</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Eligible Companies</p>
+<h3 class="text-3xl font-bold mt-1">48</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_20px_40px_rgba(39,46,66,0.04)]">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container/20 rounded-xl">
+<span class="material-symbols-outlined text-secondary" data-icon="send">send</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Applications Submitted</p>
+<h3 class="text-3xl font-bold mt-1">14</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_20px_40px_rgba(39,46,66,0.04)] border-l-4 border-error">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-error-container/10 rounded-xl">
+<span class="material-symbols-outlined text-error" data-icon="event_busy">event_busy</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Upcoming Deadlines</p>
+<h3 class="text-3xl font-bold mt-1">03</h3>
+</div>
+</section>
+<!-- Application tracker -->
+<section class="mb-12">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_20px_40px_rgba(39,46,66,0.04)]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-xl font-bold font-headline">Current Application Progress</h3>
+<p class="text-sm text-on-surface-variant">NexGen AI - Frontend Developer Intern</p>
+</div>
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">In Progress</span>
+</div>
+<div class="relative px-4">
+<!-- Connector Track -->
+<div class="absolute top-1/2 left-0 w-full h-1 bg-surface-container-highest -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-0 w-2/3 h-1 primary-gradient -translate-y-1/2"></div>
+<div class="relative flex justify-between">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full primary-gradient flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined text-sm" data-icon="check" data-weight="fill">check</span>
+</div>
+<span class="text-xs font-bold">Applied</span>
+<span class="text-[10px] text-on-surface-variant">Oct 12</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full primary-gradient flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined text-sm" data-icon="check" data-weight="fill">check</span>
+</div>
+<span class="text-xs font-bold">Shortlisted</span>
+<span class="text-[10px] text-on-surface-variant">Oct 15</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full primary-gradient ring-4 ring-surface-container-lowest flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined text-sm" data-icon="hourglass_empty">hourglass_empty</span>
+</div>
+<span class="text-xs font-bold text-primary">Interview</span>
+<span class="text-[10px] text-primary font-bold">Today, 2:00 PM</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant z-10">
+<span class="material-symbols-outlined text-sm" data-icon="stars">stars</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">Selected</span>
+<span class="text-[10px] text-on-surface-variant">TBD</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Section 2: Eligible Companies (2/3 width) -->
+<div class="lg:col-span-2">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="text-2xl font-bold font-headline">Eligible Companies</h3>
+<p class="text-on-surface-variant text-sm">Opportunities matching your academic criteria</p>
+</div>
+<a class="text-primary font-bold text-sm hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Company Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:shadow-[0_20px_40px_rgba(70,71,211,0.08)] transition-all duration-300">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Company Logo" class="w-8 h-8 object-contain" data-alt="minimalist tech logo with sleek geometric shapes in blue and purple colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCULUuDRDugLhWvzzd1-tQDw4Q2snOmhPxtlqd8pqeCTMjVn02Apk7jNkpaB4M6MiHeILo8TRtifA3QriVKrjADidkV7wkjUkwl6n1GHMWh5dJKR868gXtTnRa44G2xTKjjp0W5z7O0B631Z_5_emHh9HGrE1bRA0pZgZxWt2g9cbFn2u_wAlQiHS7zY_xQEnUF4E5jfLQhWPfE_4criU0go_A8XNh5QPSZt4KmgwWVtj_rwLlw9WA_Xqq2jRjUhfgQ5ZrFz4Q9-S9-"/>
+</div>
+<span class="bg-tertiary-container/20 text-on-tertiary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase">95% Match</span>
+</div>
+<h4 class="font-bold text-lg">CloudStrata Inc.</h4>
+<p class="text-sm text-on-surface-variant mb-4">DevOps Associate</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider">
+<span>Eligibility</span>
+<span>95%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full primary-gradient rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<button class="w-full py-3 rounded-xl font-bold text-sm text-white primary-gradient shadow-lg shadow-primary/20 active:scale-95 transition-transform">Apply Now</button>
+</div>
+<!-- Company Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:shadow-[0_20px_40px_rgba(70,71,211,0.08)] transition-all duration-300">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img alt="Company Logo" class="w-8 h-8 object-contain" data-alt="modern corporate emblem with crystalline shapes and professional aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOLNAPgfTIk11fWE8u90BqzgXetKdVaVaXErWrNHmj3Bvr5YPutBkC9KRC6ZimWV7Hxts_LQIKZ4YLFcENnyYSJWNPB4Gu6VMVRGbLBcIdqXs3hJY5NZwpJYs6g7vzVxRD_X9nurZQPU383aTiQrsvn24HjdnpdSlInREVvIWsjI4JgWVT3S7G5rcFkanH2idObNLww88W97T1e41zk8Qvt3YkfLAhsowI8Ws7fXZvccSfROV3hWlRlHfFszAOOryMWny0SNcAOHM2"/>
+</div>
+<span class="bg-tertiary-container/20 text-on-tertiary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase">88% Match</span>
+</div>
+<h4 class="font-bold text-lg">DataFlow Systems</h4>
+<p class="text-sm text-on-surface-variant mb-4">Data Analyst</p>
+<div class="space-y-2 mb-6">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-wider">
+<span>Eligibility</span>
+<span>88%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full primary-gradient rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<button class="w-full py-3 rounded-xl font-bold text-sm text-white primary-gradient shadow-lg shadow-primary/20 active:scale-95 transition-transform">Apply Now</button>
+</div>
+</div>
+</div>
+<!-- Section 1: Recommended (1/3 width - Bento style) -->
+<div>
+<h3 class="text-2xl font-bold font-headline mb-6">Recommended</h3>
+<div class="space-y-6">
+<div class="bg-secondary-container/20 p-6 rounded-lg border border-secondary-container/30 relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 text-secondary font-bold text-xs uppercase mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                                    Best Fit for you
+                                </div>
+<h4 class="font-bold text-xl mb-1">Stripe</h4>
+<p class="text-sm text-on-surface-variant mb-4">Software Engineering Intern (Summer '24)</p>
+<div class="flex items-center gap-2 mb-6">
+<span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold">Python</span>
+<span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold">React</span>
+</div>
+<button class="flex items-center gap-2 text-secondary font-bold text-sm">
+                                    View Details
+                                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Background Decoration -->
+<div class="absolute -bottom-8 -right-8 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="psychology">psychology</span>
+                                Skill Match
+                            </h4>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>Problem Solving</span>
+<span class="font-bold">Expert</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim" style="width: 90%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span>System Design</span>
+<span class="font-bold">Intermediate</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim" style="width: 65%;"></div>
+</div>
+</div>
+<div class="pt-2">
+<p class="text-[10px] text-on-surface-variant leading-relaxed">You rank in the top 5% of candidates for roles requiring Python and SQL.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button - Supressed as per policy for focused dash screens, but for student portal "Upload Resume" or "Quick Apply" is often vital. Policy states "ONLY if primary purpose aligns". Dashboard is overview, so FAB is suppressed to avoid clutter. -->
+</body></html>

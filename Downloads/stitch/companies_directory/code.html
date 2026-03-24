@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Companies Directory | PlaceBridge</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#8083ff",
+              "on-primary": "#f4f1ff",
+              "outline-variant": "#a5adc6",
+              "on-primary-container": "#0a0081",
+              "background": "#f6f6ff",
+              "primary-dim": "#3939c7",
+              "on-secondary-container": "#5517bf",
+              "inverse-on-surface": "#959cb5",
+              "on-tertiary-fixed-variant": "#003d5a",
+              "surface": "#f6f6ff",
+              "on-error": "#ffefef",
+              "outline": "#6f768e",
+              "tertiary-fixed-dim": "#25adf1",
+              "on-error-container": "#510017",
+              "surface-container-high": "#d9e2ff",
+              "surface-container": "#e2e7ff",
+              "on-secondary-fixed-variant": "#5f28c8",
+              "tertiary-dim": "#00557b",
+              "primary-fixed-dim": "#8387ff",
+              "surface-tint": "#4647d3",
+              "primary-container": "#9396ff",
+              "on-primary-fixed-variant": "#0e009d",
+              "on-background": "#272e42",
+              "primary": "#4647d3",
+              "tertiary-fixed": "#40bbff",
+              "secondary-dim": "#5e26c7",
+              "tertiary": "#00628c",
+              "surface-container-highest": "#d1dcff",
+              "on-tertiary": "#e9f4ff",
+              "on-surface": "#272e42",
+              "primary-fixed": "#9396ff",
+              "surface-container-low": "#eef0ff",
+              "inverse-surface": "#060e20",
+              "on-surface-variant": "#535b71",
+              "error-dim": "#a70138",
+              "on-primary-fixed": "#000000",
+              "error": "#b41340",
+              "secondary": "#6a37d4",
+              "surface-dim": "#c7d4fa",
+              "secondary-container": "#dac9ff",
+              "on-secondary": "#f8f0ff",
+              "error-container": "#f74b6d",
+              "on-secondary-fixed": "#40009b",
+              "on-tertiary-container": "#00344d",
+              "surface-variant": "#d1dcff",
+              "surface-bright": "#f6f6ff",
+              "secondary-fixed-dim": "#ceb9ff",
+              "on-tertiary-fixed": "#001a29",
+              "secondary-fixed": "#dac9ff",
+              "tertiary-container": "#40bbff",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #4647d3 0%, #6a37d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #4647d3 0%, #6a37d4 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 bg-[#eef0ff] dark:bg-slate-900 z-50">
+<div class="px-8 py-10">
+<h1 class="text-2xl font-bold tracking-tight text-[#4647d3] dark:text-[#6366F1] font-headline">PlaceBridge</h1>
+<p class="text-xs text-on-surface-variant/70 font-medium tracking-widest mt-1">STUDENT PORTAL</p>
+</div>
+<nav class="flex-1 flex flex-col px-0">
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-[#4647d3] dark:text-[#6366F1] bg-[#ffffff] dark:bg-slate-800 border-l-[3px] border-[#4647d3] font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="business">business</span>
+<span class="font-medium">Companies</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-medium">Applications</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-medium">Skill Gap</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-[#d9e2ff] dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span class="font-medium">Admin Panel</span>
+</a>
+</nav>
+<div class="p-8 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-surface-container-highest/30 rounded-2xl">
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up portrait of a professional young man with a friendly smile, clean indoor office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYBExjIF5dMBP-SpVtVHSbQBE4a_Rtyx0LEWJ5NVPFq84W9wcolFIFEWU2aa0r1iq2TrlMHTDUJoVstrZRhmDVfZfoHIBUg1Eyr0hqP7msZM4NcamvEJN-7CXY0mJ_jZw3HYbCOB_m1wi3zQQxKodvynhxAlhN5MjwSXDsK1JrQwGYicfLBgkVtHzZiiHv9B_ry-TDFMoaeXLXS-tjdaJDkN4ZoXpUpxQqxsceyfK533Knr18uqKEI3Z8p_k5F1Ye4m9GdeJeVC57q"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant truncate">Computer Science</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 z-40 bg-[#f6f6ff]/80 dark:bg-slate-950/80 backdrop-blur-xl flex justify-between items-center w-full pl-8 pr-8 py-6">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 pl-10 text-lg font-body placeholder:text-outline-variant" placeholder="Search companies or roles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full p-2 transition-all duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="px-12 py-8">
+<!-- Hero Header Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-5xl font-extrabold font-headline tracking-tight text-on-surface mb-2">Companies <span class="gradient-text">Directory</span></h2>
+<p class="text-on-surface-variant text-lg max-w-2xl">Connect with industry leaders and explore placement opportunities tailored to your skill set and aspirations.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-highest text-primary font-semibold rounded-2xl hover:bg-surface-container-high transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="file_download">file_download</span>
+                            Export List
+                        </button>
+<button class="px-6 py-3 primary-gradient text-white font-semibold rounded-2xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                            Submit Referral
+                        </button>
+</div>
+</div>
+</section>
+<!-- Filters Section - Bento-ish Filter Bar -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Eligibility Status</label>
+<div class="relative">
+<select class="w-full bg-transparent border-none focus:ring-0 font-semibold p-0 text-on-surface appearance-none cursor-pointer">
+<option>All Opportunities</option>
+<option>Eligible Only</option>
+<option>Applied</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-0 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Primary Skills</label>
+<div class="relative">
+<select class="w-full bg-transparent border-none focus:ring-0 font-semibold p-0 text-on-surface appearance-none cursor-pointer">
+<option>All Skills</option>
+<option>React &amp; Node.js</option>
+<option>Data Science</option>
+<option>UI/UX Design</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-0 pointer-events-none" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex flex-col gap-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Package Range</label>
+<div class="relative">
+<select class="w-full bg-transparent border-none focus:ring-0 font-semibold p-0 text-on-surface appearance-none cursor-pointer">
+<option>Any Package</option>
+<option>10 LPA - 15 LPA</option>
+<option>15 LPA - 25 LPA</option>
+<option>25+ LPA</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-0 pointer-events-none" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl flex items-center justify-between">
+<div>
+<p class="text-2xl font-bold font-headline">124</p>
+<p class="text-xs font-medium text-on-surface-variant">Active Openings</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</div>
+</section>
+<!-- Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Company Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Google Logo" class="w-full h-full object-contain" data-alt="Minimalist modern tech company logo with clean geometric shapes and vibrant professional colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LKXiEyKIx3EWyUlRJ4Ee-7niW1mIDr33v-KEQmYGurn_Eq-gewQ0v21txNkuk6lpVa6N7UN7ArEFgzErhT_SEm5t8x4iE5kstHGimN4eBzVSm6D9ggu9fx2HnwWSTXaNACgPRcGWtxbjw3ObSb8_sqgDuKtTAObmhHo1tezFhPSY9kJj7uIzu-NlknjgcyIoQ_mT6NQSwonHp13Sl--m_NmeXli6WVJ0y4X_9CGQa0tbVDpNRcaaCgCOYUtLaNLYJn-fgLYo9PZS"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary">
+                            Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Google</h3>
+<p class="text-on-surface-variant font-medium mb-6">Software Engineer - L3</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Package</p>
+<p class="text-sm font-semibold">32.5 LPA</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold text-error">12 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Python</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Distributed Systems</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Company Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Spotify Logo" class="w-full h-full object-contain" data-alt="Abstract circular icon with sound waves motif, neon green and dark aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Yowe7Esd7NrZCHZJOPGim2t6CCuge5RdQOwEM-nJACc13KRFGUPIwWG3pcOl-ov7uq2PPC16ShZEg6FRTMlfFc_3LBTHJeqnjiYtr1l9W-7Sg7ODql4A09Pkb4_4SWefwgvA0gwQpq1jDSd2vAe-YMP5R8bUQIDZTjcWkZkKSLcTuv8orJte2v8tKV0ixMBUG3HqM0X8v9ShAr0Xrl_OXrX141m2GHmYos9spVp3-0SBvQn5TLiRVWgWyLXxhMyF-lCpXXH9wyfD"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary">
+                            Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Spotify</h3>
+<p class="text-on-surface-variant font-medium mb-6">Backend Architect</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Package</p>
+<p class="text-sm font-semibold">28.0 LPA</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold">15 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Go</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Kubernetes</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Company Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Stripe Logo" class="w-full h-full object-contain" data-alt="Minimalist tech company wordmark on a clean solid background with high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXiDu3AMhyF2muMZhn-wIM54OPOZGLoeZNvq4GzHuULPQ-YxnoMWXGaH8XIrAdC55W1y992gaUMAiJyhDJ2yj_gRfB3l6HPAmoOlQKrDnaVzPqOQ6RLfgBNtHfm7AwzcDcI7DctwO7ZU7Zk2B1XiIjpBUHUI_pkW2lhgGeON6JZg8i47DLx2010v5czBulN2faFiLpUtjUeWR2be2FNFHSMF21tJkZXrfdj4bYqUzDvcc7bQwHtizK7ZSh75dPfWbAncgtf9xm3fd8"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-error-container/10 text-error-dim">
+                            Not Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Stripe</h3>
+<p class="text-on-surface-variant font-medium mb-6">Product Designer</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Package</p>
+<p class="text-sm font-semibold">24.0 LPA</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold">20 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Figma</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Systems Thinking</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Company Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Adobe Logo" class="w-full h-full object-contain" data-alt="Sleek corporate logo with a bold artistic initial on a bright background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtkPDSmsKUPbnRKC3ohJAKVCdZ6EOlRS94z_EBoJAD83OWEq1kGvPbjxyOGxeFwXGDj-8hw_KjAh_bGT9cI_-NKqhIenHbGg-vj7NMM7ASEQkG0SxTw3LdJ9JwrDps7GKpUJd-EExwOCkLD6LO-NHCVEO2dgE88ImYEeSDorME3ejPlp3J7G5UAz6tNmI9K0yxyMtpwUHiwjfvUnTW4V0ly6bP2fZ4eNMAm1JLtpX5HvtpXXUIiq7l0bIN0Wfh44K5x5sbawQaAKYD"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary">
+                            Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Adobe</h3>
+<p class="text-on-surface-variant font-medium mb-6">SDE Intern</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Stipend</p>
+<p class="text-sm font-semibold">1.2L / mo</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold">22 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">C++</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Algorithms</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Company Card 5 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Netflix Logo" class="w-full h-full object-contain" data-alt="Minimalist red logo icon on dark field, modern entertainment tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5N5-i3Uf3TyhcUeRq_DkQ-nF-q2gQ8OBuJIWWzTCyx6oNUjTCLqdutjhnPxCaGKfTsm36jrVvvXcr69FVLDbhE1dDSCga0uUHlM8NktGkPOOCtiCwXX-x0qjhf9XU1OIZErCs7U9JBRrdqlwWLcH50Ri4iiRORh6AY4vsaw3ZYZrq8ySt4DFd1bba19t5jFk76djxkUK49n7liUFUxxvXE8aPoWSSklt7PyDl4YQVe6LxYkz9O4zAOhbxIFRWtHO9hHM3IplExUNb"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary">
+                            Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Netflix</h3>
+<p class="text-on-surface-variant font-medium mb-6">ML Engineer</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Package</p>
+<p class="text-sm font-semibold">45.0 LPA</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold text-error">18 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">PyTorch</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">AWS</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Company Card 6 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-transparent hover:border-primary/10 hover:shadow-2xl hover:shadow-primary/5 transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3">
+<img alt="Microsoft Logo" class="w-full h-full object-contain" data-alt="Four-pane window logo with vibrant primary colors on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOYnblxo75sYBO6I1nPVoK2SzMRYkPjFWS37vfQ-j4kM_NS-3R7UsM4oLeDDPXY5x7K90swhPhL0KEbxRpgtGDG5cWJoIJsAz-W16xDu255FraSys7mBpIkDJpr2p-SWJ0G6HAtyhW9WVQPds2wlAJ_dZz4UoxkIRZtT6beNKt4HZw2iY-4qF-iJRM2wjPObgCKZLTb7Op9LHDBztnYfOY9xRCILJ7v-D-LDCswZhNr0m6qB_2qvQLtqcxsg6vwmKyO2wM5HgMrpMj"/>
+</div>
+<span class="px-4 py-1.5 rounded-full text-xs font-bold bg-tertiary-container/20 text-tertiary">
+                            Eligible
+                        </span>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-1 group-hover:text-primary transition-colors">Microsoft</h3>
+<p class="text-on-surface-variant font-medium mb-6">Full Stack Developer</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Package</p>
+<p class="text-sm font-semibold">31.0 LPA</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant opacity-60 font-bold">Deadline</p>
+<p class="text-sm font-semibold">25 Oct 2023</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Azure</span>
+<span class="px-3 py-1 bg-surface-container text-xs font-medium rounded-full">Typescript</span>
+</div>
+<button class="w-full py-4 rounded-2xl bg-surface-container-low text-primary font-bold group-hover:bg-primary group-hover:text-white transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Pagination/Footer Actions -->
+<div class="mt-16 mb-12 flex justify-center">
+<nav class="flex items-center gap-2 bg-surface-container-low p-2 rounded-2xl">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors font-semibold">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors font-semibold">3</button>
+<span class="px-2 opacity-50">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors font-semibold">12</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Directory as per Suppression rules, but showing for demo purpose if this was a sub-page that allowed quick-apply) -->
+<!-- Suppression: Suppressed for main Directory view but ready for Task-focused screens -->
+</body></html>
