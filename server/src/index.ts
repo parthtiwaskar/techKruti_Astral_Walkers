@@ -5,23 +5,7 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-console.log('__dirname:', __dirname);
-console.log('Target .env path:', path.resolve(__dirname, '../.env'));
-
-// Manual fallback for suspicious environments
-if (!process.env.GEMINI_API_KEY) {
-  try {
-    const envPath = path.resolve(__dirname, '../.env');
-    const envContent = require('fs').readFileSync(envPath, 'utf8');
-    const match = envContent.match(/GEMINI_API_KEY=(.*)/);
-    if (match && match[1]) {
-      process.env.GEMINI_API_KEY = match[1].trim();
-      console.log('--- MANUAL ENV LOAD SUCCESS ---');
-    }
-  } catch (e: any) {
-    console.log('--- MANUAL ENV LOAD FAILED ---', e.message);
-  }
-}
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 console.log('--- RESTARTING BACKEND ---');
 import { companyRoutes } from './modules/companies/routes';

@@ -1,10 +1,7 @@
 import { Request, Response } from 'express';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
 
 dotenv.config();
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 const SYSTEM_PROMPT = `You are a professional placement company expert for 'PlaceBridge', a premium student career portal. 
 Your goal is to help students (like Michael Mims) overcome their skill gaps, prepare for interviews, and optimize their career paths. 
