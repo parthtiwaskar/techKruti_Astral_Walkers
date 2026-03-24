@@ -1,63 +1,63 @@
+// This module is isolated. Do not directly access internal logic from other modules. Use contracts or APIs.
 import { Request, Response } from 'express';
 import { applicationService } from './service';
 import { ApiResponse } from '../../shared/contracts/api';
+import { AuthRequest } from '../../middleware/verifyToken';
 
 export class ApplicationController {
-  public applyJob = (req: Request, res: Response) => {
+  // --- MOCK LAYER (Student Branch) ---
+  public applyJobMock = (req: Request, res: Response) => {
     try {
       const { studentId, jobId } = req.body;
-      if (!studentId || !jobId) {
-        return res.status(400).json({ success: false, error: 'studentId and jobId are required' });
-      }
-      const application = applicationService.applyToJob({ studentId, jobId });
+      if (!studentId || !jobId) return res.status(400).json({ success: false, error: 'studentId and jobId are required' });
+      const application = applicationService.applyToJobMock({ studentId, jobId });
       res.status(201).json({ success: true, data: application } as ApiResponse);
-    } catch (error: any) {
-      if (error.message === 'Duplicate application') {
-        return res.status(409).json({ success: false, error: error.message });
-      }
-      if (error.message === 'Job not found') {
-        return res.status(404).json({ success: false, error: error.message });
-      }
-      res.status(500).json({ success: false, error: error.message });
-    }
+    } catch (error: any) { res.status(500).json({ success: false, error: error.message }); }
   };
-
-  public getApplications = (req: Request, res: Response) => {
+  public getStudentApplicationsMock = (req: Request<{ studentId: string }>, res: Response) => {
     try {
       const { studentId } = req.params;
-      const applications = applicationService.getStudentApplications(studentId as string);
+      const applications = applicationService.getStudentApplicationsMock(studentId);
       res.json({ success: true, data: applications } as ApiResponse);
-    } catch (error: any) {
-      res.status(500).json({ success: false, error: error.message });
-    }
+    } catch (error: any) { res.status(500).json({ success: false, error: error.message }); }
   };
-
-  public updateStatus = (req: Request, res: Response) => {
+  public updateStatusMock = (req: Request<{ applicationId: string }>, res: Response) => {
     try {
       const { applicationId } = req.params;
       const { status } = req.body;
-      if (!status) {
-        return res.status(400).json({ success: false, error: 'status is required' });
-      }
-      const application = applicationService.updateStatus(applicationId as string, status as "applied" | "shortlisted" | "interview" | "rejected" | "offered");
+      const application = applicationService.updateStatusMock(applicationId, status as any);
       res.json({ success: true, data: application } as ApiResponse);
-    } catch (error: any) {
-      if (error.message === 'Application not found') {
-         return res.status(404).json({ success: false, error: error.message });
-      }
-      res.status(500).json({ success: false, error: error.message });
-    }
+    } catch (error: any) { res.status(500).json({ success: false, error: error.message }); }
   };
-
-  public getDashboard = (req: Request, res: Response) => {
+  public getDashboardMock = (req: Request<{ studentId: string }>, res: Response) => {
     try {
       const { studentId } = req.params;
-      const dashboard = applicationService.getOpportunityDashboard(studentId as string);
+      const dashboard = applicationService.getOpportunityDashboardMock(studentId);
       res.json({ success: true, data: dashboard } as ApiResponse);
+    } catch (error: any) { res.status(500).json({ success: false, error: error.message }); }
+  };
+
+  // --- SQL LAYER (Opportunity Branch) ---
+  public getApplicationsSQL = async (req: AuthRequest, res: Response) => {
+    const firebaseUid = req.user?.uid;
+    if (!firebaseUid) return res.status(401).json({ success: false, error: 'Unauthorized' });
+    try {
+      const apps = await applicationService.getApplicationsByFirebaseUid(firebaseUid);
+      res.json({ success: true, data: apps } as ApiResponse);
+    } catch (error) {
+      res.status(500).json({ success: false, error: 'Internal server error' });
+    }
+  };
+  public applyToCompanySQL = async (req: AuthRequest, res: Response) => {
+    const firebaseUid = req.user?.uid;
+    const { companyId } = req.body;
+    if (!firebaseUid || !companyId) return res.status(400).json({ success: false, error: 'Missing information' });
+    try {
+      const newApp = await applicationService.applyToCompanySQL(firebaseUid, companyId);
+      res.status(201).json({ success: true, data: newApp } as ApiResponse);
     } catch (error: any) {
       res.status(500).json({ success: false, error: error.message });
     }
   };
 }
-
 export const applicationController = new ApplicationController();

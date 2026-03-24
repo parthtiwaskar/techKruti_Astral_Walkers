@@ -4,8 +4,8 @@ import { ApiResponse } from '../../shared/contracts/api';
 import { Student } from '../../shared/contracts/types';
 
 export class ProfileController {
-    static getProfile(req: Request, res: Response) {
-        const student = ProfileService.getProfile(req.params.studentId as string);
+    static getProfile(req: Request<{ studentId: string }>, res: Response) {
+        const student = ProfileService.getProfile(req.params.studentId);
         if (!student) {
             const response: ApiResponse = { success: false, error: "Profile not found" };
             return res.status(404).json(response);
@@ -25,8 +25,8 @@ export class ProfileController {
         }
     }
 
-    static updateProfile(req: Request, res: Response) {
-        const student = ProfileService.updateProfile(req.params.studentId as string, req.body);
+    static updateProfile(req: Request<{ studentId: string }>, res: Response) {
+        const student = ProfileService.updateProfile(req.params.studentId, req.body);
         if (!student) {
             const response: ApiResponse = { success: false, error: "Profile not found" };
             return res.status(404).json(response);
@@ -35,8 +35,8 @@ export class ProfileController {
         res.json(response);
     }
 
-    static getCompleteness(req: Request, res: Response) {
-        const completeness = ProfileService.getCompleteness(req.params.studentId as string);
+    static getCompleteness(req: Request<{ studentId: string }>, res: Response) {
+        const completeness = ProfileService.getCompleteness(req.params.studentId);
         if (completeness === null) {
             const response: ApiResponse = { success: false, error: "Profile not found" };
             return res.status(404).json(response);

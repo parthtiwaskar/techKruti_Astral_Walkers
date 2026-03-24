@@ -4,8 +4,8 @@ import { ApiResponse } from '../../shared/contracts/api';
 import { ResumeAnalysisResult } from './types';
 
 export class ResumeController {
-    static getAnalysis(req: Request, res: Response) {
-        const studentId = req.params.studentId as string;
+    static getAnalysis(req: Request<{ studentId: string }>, res: Response) {
+        const studentId = req.params.studentId;
         const analysis = ResumeService.getAnalysis(studentId);
         
         const response: ApiResponse<ResumeAnalysisResult> = { success: true, data: analysis };

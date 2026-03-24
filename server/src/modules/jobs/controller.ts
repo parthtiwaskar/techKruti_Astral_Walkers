@@ -21,7 +21,7 @@ export class JobController {
     }
   };
 
-  public getJobById = (req: Request, res: Response) => {
+  public getJobById = (req: Request<{ id: string }>, res: Response) => {
     try {
       const job = jobService.getJobById(req.params.id);
       if (!job) {
@@ -46,7 +46,7 @@ export class JobController {
     }
   };
 
-  public updateJob = (req: Request, res: Response) => {
+  public updateJob = (req: Request<{ id: string }>, res: Response) => {
     try {
       const updated = jobService.updateJob(req.params.id, req.body);
       if (!updated) {
@@ -58,7 +58,7 @@ export class JobController {
     }
   };
 
-  public deleteJob = (req: Request, res: Response) => {
+  public deleteJob = (req: Request<{ id: string }>, res: Response) => {
     try {
       const deleted = jobService.deleteJob(req.params.id);
       if (!deleted) {

@@ -1,3 +1,4 @@
+// This module is isolated. Do not directly access internal logic from other modules. Use contracts or APIs.
 import { Company } from '../../shared/contracts/types';
 import { CompanyRepository, companyRepository } from './repository';
 import { CreateCompanyRequest } from './types';
@@ -6,15 +7,15 @@ import { generateId } from './utils';
 export class CompanyService {
   constructor(private repo: CompanyRepository) {}
 
-  public getCompanies(): Company[] {
-    return this.repo.getAll();
+  public async getCompanies(filters: any): Promise<any[]> {
+    return this.repo.getAll(filters);
   }
 
-  public getCompanyById(id: string): Company | undefined {
+  public async getCompanyById(id: string): Promise<any | undefined> {
     return this.repo.getById(id);
   }
 
-  public createCompany(request: CreateCompanyRequest): Company {
+  public async createCompany(request: CreateCompanyRequest): Promise<Company> {
     const newCompany: Company = {
       id: generateId(),
       name: request.name,

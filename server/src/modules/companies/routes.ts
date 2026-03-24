@@ -1,3 +1,4 @@
+// This module is isolated. Do not directly access internal logic from other modules. Use contracts or APIs.
 import { Router } from 'express';
 import { companyController } from './controller';
 

@@ -1,98 +1,61 @@
+// This module is isolated. Do not directly access internal logic from other modules. Use contracts or APIs.
 import { Application } from '../../shared/contracts/types';
 import { ApplicationRepository, applicationRepository } from './repository';
-import { ApplyJobRequest, UpdateApplicationStatusRequest } from './types';
+import { ApplyJobRequest } from './types';
 import { generateId } from './utils';
-import { notificationService } from '../notifications/service';
-import { jobService } from '../jobs/service';
 
 export class ApplicationService {
   constructor(private repo: ApplicationRepository) {}
 
-  public applyToJob(request: ApplyJobRequest): Application {
-    const existing = this.repo.getByStudentAndJob(request.studentId, request.jobId);
-    if (existing) {
-      throw new Error('Duplicate application');
-    }
-
-    const job = jobService.getJobById(request.jobId);
-    if (!job) {
-      throw new Error('Job not found');
-    }
+  public applyToJobMock(request: ApplyJobRequest): Application {
+    const existing = this.repo.getByStudentAndJobMock(request.studentId, request.jobId);
+    if (existing) throw new Error('Duplicate application');
 
     const now = new Date().toISOString();
     const newApplication: Application = {
-      id: generateId(),
-      studentId: request.studentId,
-      jobId: request.jobId,
-      status: "applied",
-      appliedAt: now,
-      updatedAt: now,
+      id: generateId(), studentId: request.studentId, jobId: request.jobId,
+      status: "applied", appliedAt: now, updatedAt: now,
       statusHistory: [{ status: "applied", timestamp: now }]
     };
-
-    const saved = this.repo.create(newApplication);
-
-    notificationService.triggerEvent({
-      studentId: request.studentId,
-      message: `You have successfully applied to ${job.title || 'the job'}.`,
-      type: 'APPLICATION_SUBMITTED'
-    });
-
-    return saved;
+    return this.repo.createMock(newApplication);
   }
 
-  public getStudentApplications(studentId: string): Application[] {
-    return this.repo.getAllForStudent(studentId);
+  public getStudentApplicationsMock(studentId: string): Application[] {
+    return this.repo.getAllForStudentMock(studentId);
   }
 
-  public updateStatus(id: string, status: "applied" | "shortlisted" | "interview" | "rejected" | "offered"): Application {
-    const application = this.repo.getById(id);
-    if (!application) {
-      throw new Error('Application not found');
-    }
-
+  public updateStatusMock(id: string, status: "applied" | "shortlisted" | "interview" | "rejected" | "offered"): Application {
+    const application = this.repo.getByIdMock(id);
+    if (!application) throw new Error('Application not found');
     const now = new Date().toISOString();
     const history = application.statusHistory || [];
     history.push({ status, timestamp: now });
-
-    const updated = this.repo.update(id, {
-      status,
-      updatedAt: now,
-      statusHistory: history
-    });
-
-    if (updated) {
-      const job = jobService.getJobById(updated.jobId);
-      notificationService.triggerEvent({
-        studentId: updated.studentId,
-        message: `Your application status for ${job?.title || 'a job'} has been updated to ${status}.`,
-        type: 'STATUS_UPDATED'
-      });
-    }
-
+    const updated = this.repo.updateMock(id, { status, updatedAt: now, statusHistory: history });
     return updated!;
   }
 
-  public getOpportunityDashboard(studentId: string): { availableJobs: any[], appliedJobs: any[] } {
-    const allJobs = jobService.getJobs();
-    const applications = this.repo.getAllForStudent(studentId);
-
-    const appliedJobIds = new Set(applications.map(a => a.jobId));
+  public getOpportunityDashboardMock(studentId: string): { availableJobs: any[], appliedJobs: any[] } {
+    // Decoupled from jobService: safe mock fallback
+    const mockAvailableJobs = [{ id: 'mock-job-1', title: 'Software Engineer', company: 'TechCorp' }];
+    const applications = this.repo.getAllForStudentMock(studentId);
     
-    const availableJobs = allJobs.filter(j => !appliedJobIds.has(j.id));
-    
-    const appliedJobs = applications.map(app => {
-      const job = jobService.getJobById(app.jobId);
-      return {
-        applicationId: app.id,
-        status: app.status,
-        appliedAt: app.appliedAt,
-        job
-      };
-    });
+    const appliedJobs = applications.map(app => ({
+      applicationId: app.id, status: app.status, appliedAt: app.appliedAt,
+      job: { id: app.jobId, title: 'Applied Job Mock' }
+    }));
+    return { availableJobs: mockAvailableJobs, appliedJobs };
+  }
 
-    return { availableJobs, appliedJobs };
+  public async getApplicationsByFirebaseUid(firebaseUid: string) {
+    return this.repo.getApplicationsByFirebaseUid(firebaseUid);
+  }
+
+  public async applyToCompanySQL(firebaseUid: string, companyId: string) {
+    const userId = await this.repo.getUserIdByFirebaseUid(firebaseUid);
+    if (!userId) throw new Error('User not found in database');
+    const alreadyApplied = await this.repo.checkCompanyApplication(userId, companyId);
+    if (alreadyApplied) throw new Error('Already applied to this company');
+    return this.repo.applyToCompanySQL(userId, companyId);
   }
 }
-
 export const applicationService = new ApplicationService(applicationRepository);

@@ -3,10 +3,10 @@ import { notificationService } from './service';
 import { ApiResponse } from '../../shared/contracts/api';
 
 export class NotificationController {
-  public getStudentNotifications = (req: Request, res: Response) => {
+  public getStudentNotifications = (req: Request<{ studentId: string }>, res: Response) => {
     try {
       const { studentId } = req.params;
-      const notifications = notificationService.getForStudent(studentId as string);
+      const notifications = notificationService.getForStudent(studentId);
       res.json({ success: true, data: notifications } as ApiResponse);
     } catch (error: any) {
       res.status(500).json({ success: false, error: error.message });

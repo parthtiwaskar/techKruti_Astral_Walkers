@@ -1,8 +1,10 @@
+// This module is isolated. Do not directly access internal logic from other modules. Use contracts or APIs.
 import { AnalyticsRepository } from './repository';
 import { computeProfileStrengthScore, generateSkillDistribution } from './utils';
 import { DashboardSummary } from './types';
 
 export class AnalyticsService {
+    // Mock logic
     static getSummary(studentId: string): DashboardSummary {
         const data = AnalyticsRepository.getMockStudentData(studentId);
         
@@ -27,5 +29,27 @@ export class AnalyticsService {
         };
         
         return summary;
+    }
+
+    // Opportunity logic
+    static async getDashboardStats(firebaseUid: string) {
+        const userId = await AnalyticsRepository.getUserIdByFirebaseUid(firebaseUid);
+        const totalCompanies = await AnalyticsRepository.getTotalCompanies();
+        const eligibleCount = totalCompanies; // Simplified for stub
+        
+        let appliedCount = 0;
+        let interviewCount = 0;
+        
+        if (userId) {
+            appliedCount = await AnalyticsRepository.getApplicationsCount(userId);
+            interviewCount = await AnalyticsRepository.getInterviewCount(userId);
+        }
+
+        return {
+            totalCompanies,
+            eligibleCompanies: eligibleCount,
+            applicationsSubmitted: appliedCount,
+            upcomingDeadlines: 3 // Placeholder
+        };
     }
 }
