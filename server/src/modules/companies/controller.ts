@@ -15,7 +15,7 @@ export class CompanyController {
 
   public getCompanyById = (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const company = companyService.getCompanyById(id);
       if (!company) {
          return res.status(404).json({ success: false, error: 'Company not found' });

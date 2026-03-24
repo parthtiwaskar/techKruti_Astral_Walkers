@@ -23,7 +23,7 @@ export class JobController {
 
   public getJobById = (req: Request, res: Response) => {
     try {
-      const job = jobService.getJobById(req.params.id);
+      const job = jobService.getJobById(req.params.id as string);
       if (!job) {
         return res.status(404).json({ success: false, error: 'Job not found' });
       }
@@ -48,7 +48,7 @@ export class JobController {
 
   public updateJob = (req: Request, res: Response) => {
     try {
-      const updated = jobService.updateJob(req.params.id, req.body);
+      const updated = jobService.updateJob(req.params.id as string, req.body);
       if (!updated) {
         return res.status(404).json({ success: false, error: 'Job not found' });
       }
@@ -60,7 +60,7 @@ export class JobController {
 
   public deleteJob = (req: Request, res: Response) => {
     try {
-      const deleted = jobService.deleteJob(req.params.id);
+      const deleted = jobService.deleteJob(req.params.id as string);
       if (!deleted) {
         return res.status(404).json({ success: false, error: 'Job not found' });
       }
