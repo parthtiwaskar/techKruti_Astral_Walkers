@@ -41,6 +41,10 @@ export class CareerAdvisorController {
         responseText = "For your Airbnb roadmap, the priority is **Data Orchestration**. Since you're already proficient in Python and Ruby, learning Airflow's Pythonic DAG structure will be smooth. I've updated your Skill Gap section with a '2-week fast-track' guide to get you interview-ready.";
       } else if (lowerMsg.includes('meta') || lowerMsg.includes('react') || lowerMsg.includes('performance')) {
         responseText = "I see you're asking about Frontend performance. For Meta, they really value **React Profiling** and **Accessibility**. Your current roadmap has 2 steps remaining. Once you complete the 'Accessibility Audit', you'll be in the top 15% of candidates for their upcoming Solutions Architect roles.";
+      } else if (lowerMsg.includes('skill gap') || lowerMsg.includes('my gaps') || lowerMsg.includes('missing')) {
+        responseText = "Your current analysis shows 3 primary areas for growth: **System Design** (from Stripe), **Data Orchestration** (from Airbnb), and **Frontend Performance** (from Meta). You've already made 25% progress on your roadmaps! I recommend tackling the 'Airflow Basics' first as it aligns most with your existing scripting skills.";
+      } else if (lowerMsg.includes('prep') || lowerMsg.includes('interview') || lowerMsg.includes('prepare')) {
+        responseText = "Excellent timing! You have a technical round with Nvidia in 2 days. Head over to the **'Interview Prep Guide'** section in the side menu. I've prepared a custom guide for you there covering Graphics fundamentals and common behavioral questions based on your IT Support leadership experience.";
       } else if (lowerMsg.includes('hi') || lowerMsg.includes('hello')) {
         responseText = "Hello Michael! I am your AI Career Advisor. I've reviewed your latest rejections and current progress. How can I help you accelerate your growth today? We can discuss your System Design gaps or your progress on the Data Orchestration roadmap.";
       }
