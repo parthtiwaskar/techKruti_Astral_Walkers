@@ -52,9 +52,13 @@ app.get('/health', (req, res) => {
   res.json({ status: 'SUPER_FIXED', timestamp: new Date().toISOString() });
 });
 
-app.listen(port, () => {
-  console.log(`🚀 PlaceBridge server running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`🚀 PlaceBridge server running on http://localhost:${port}`);
+  });
+}
+
+export default app;
 
 // Heartbeat to ensure the event loop stays alive in certain environments
 setInterval(() => {}, 1000 * 60 * 60);
